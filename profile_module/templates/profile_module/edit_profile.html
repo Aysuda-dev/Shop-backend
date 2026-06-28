@@ -1,0 +1,44 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% block title %}
+    ویرایش اطلاعات کاربر
+
+{% endblock %}
+
+{% block content %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">ویرایش اطلاعات کاربر</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <form enctype="multipart/form-data" action="{% url 'edit_profile_page' %}" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            {% if current_user.avatar %}
+                            	<a class="thumbnail">
+                                  <img style="width: 100% "  src="{{ current_user.avatar.url }} " class="img-responsive center-block">
+                                </a>
+                                {% else %}
+                                <img src="/static/images/blog/blog-one.jpg" width="220" height="180" class="img-responsive center-block">
+                            {% endif %} 
+                            <div class="left-sidebar">
+
+                                {% render_partial 'profile_module.views.user_panel_menu_component' %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

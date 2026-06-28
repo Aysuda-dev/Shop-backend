@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+{% load poll_extras %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>پرداخت دمو</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Vazirmatn, Tahoma, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 80px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #2f3640;
+        }
+
+        .amount {
+            background: #f1f2f6;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .amount span {
+            font-size: 22px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #dcdde1;
+            font-size: 14px;
+        }
+
+        .pay-btn {
+            width: 100%;
+            padding: 12px;
+            background: #0097e6;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .pay-btn:hover {
+            background: #0984e3;
+        }
+
+        .note {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #7f8fa6;
+            text-align: center;
+        "" "
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>درگاه پرداخت دمو</h2>
+    </div>
+
+    <div class="amount">
+        مبلغ قابل پرداخت:
+        <br>
+        <span>ریال {{ total_price| three_digit_currency }}</span>
+    </div>
+
+
+    <div class="field">
+        <label>شماره کارت</label>
+        <input type="text" placeholder="**  **  **  **  **  **  **  **">
+    </div>
+
+    <div class="field">
+        <label>تاریخ انقضا</label>
+        <input type="text" placeholder="MM / YY">
+    </div>
+
+    <div class="field">
+        <label>CVV2</label>
+        <input type="password" placeholder="***">
+    </div>
+
+    <button class="pay-btn" id="pay-success" onclick="pay()">
+        پرداخت (دمو)
+    </button>
+    <br>
+    <br>
+
+    <button type="button" class="pay-btn" onclick="location.href='{% url 'user_basket_page' %}'">
+        انصراف
+    </button>
+
+
+    <div class="note">
+        ⚠️ این درگاه صرفاً جهت نمایش و تست است
+    </div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/custum.js"></script>
+</body>
+</html>
+
+

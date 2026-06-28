@@ -1,0 +1,68 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% load poll_extras %}
+
+{% block title %}
+    لیست خرید های من
+{% endblock %}
+
+{% block content %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">لیست خرید های من</h2>
+                        <div class="col-md-12">
+                            <table class="table table-responsive table-hover table-striped">
+                                <tr>
+                                    <th class="text-right">شناسه</th>
+                                    <th class="text-right">تاریخ تایید فاکتور</th>
+                                    <th class="text-right">قیمت نهایی خرید</th>
+                                    <th class="text-right">وضعیت</th>
+                                    <th class="text-right">دستورات</th>
+                                </tr>
+                                {% for order in object_list %}
+                                    <tr>
+                                        <td class="text-right">{{ order.id }}</td>
+                                        <td class="text-right">
+                                            {{ order.payment_date | show_date}}
+                                        </td>
+                                        <td class="text-right">
+                                            {{ order.calculate_total_price|three_digit_currency}}
+                                        </td>
+                                        <td class="text-right">
+                                            {% if order.is_paid %}
+                                            	پراخت شده
+                                            {% else %}
+                                                پرداخت نشده
+                                            {% endif %}
+
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'user_shopping_detail_page' order_id=order.id %}"
+                                               class="btn btn-success">جزییات</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="left-sidebar">
+
+                                {% render_partial 'profile_module.views.user_panel_menu_component' %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

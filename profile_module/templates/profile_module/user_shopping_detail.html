@@ -1,0 +1,61 @@
+{% extends 'shared/layout.html' %}
+{% load render_partial %}
+{% load poll_extras %}
+
+{% block title %}
+    جزییات خرید
+{% endblock %}
+
+{% block content %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">جزییات خرید</h2>
+                        <div class="col-md-12">
+                            <table class="table table-responsive table-hover table-striped">
+                                <tr>
+                                    <th class="text-center">تصویر</th>
+
+                                    <th class="text-center">محصول</th>
+                                    <th class="text-center">قیمت محصول</th>
+                                    <th class="text-center">تعداد</th>
+                                    <th class="text-center">قیمت نهایی خرید</th>
+                                </tr>
+                                {% for detail in order.orderdetail_set.all %}
+                                    <tr>
+                                        <td class="text-center">
+                                            {% if detail.variant.product.image%}
+                                                <img src="{{ detail.variant.product.image.url }}" width="60" height="40"></td>
+                                             {% else %}
+                                            {% endif %}
+                                        <td class="text-center">{{ detail.variant.product.title }}</td>
+                                        <td class="text-center">{{ detail.final_price|three_digit_currency  }}</td>
+                                        <td class="text-center">{{ detail.count }}</td>
+                                        <td class="text-center">{{ detail.get_total_price|three_digit_currency }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="left-sidebar">
+
+                                {% render_partial 'profile_module.views.user_panel_menu_component' %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

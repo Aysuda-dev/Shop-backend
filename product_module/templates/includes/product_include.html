@@ -1,0 +1,35 @@
+{% load thumbnail %}
+{% load poll_extras %}
+<div class="col-sm-{{ col_size }}">
+    <div class="product-image-wrapper">
+        <div class="single-products">
+            <div class="productinfo text-center">
+
+                {% if product.image %}
+                    {% thumbnail product.image "268x250" crop="center" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                    {% endthumbnail %}
+                {% else %}
+                    <img src="/static/images/home/product.jpg" width="268" height="250">
+                {% endif %}
+
+                <h2>{{ product.title }}</h2>
+                <h4>قیمت : {{ product.price | three_digit_currency }}</h4>
+            </div>
+        <br>
+            <div class="product-overlay">
+                <div class="overlay-content">
+                    <h2>{{ product.title }}</h2>
+                    <h4>{{ product.short_description }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="choose">
+            <ul class="nav nav-pills nav-justified">
+
+                <li><a href="{% url 'product-detail'  slug=product.slug %}"><i></i>جزئیات
+                    محصول</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
