@@ -172,10 +172,13 @@ EMAIL_PORT = 587
 import locale
 import sys
 
-if sys.platform.startswith('win32'):
-    locale.setlocale(locale.LC_ALL, "Persian_Iran.UTF-8")
-else:
-    locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
+try:
+    if sys.platform.startswith('win32'):
+        locale.setlocale(locale.LC_ALL, "Persian_Iran.UTF-8")
+    else:
+        locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
+except locale.Error:
+    pass
 
 
 JALALI_DATE_DEFAULTS = {
