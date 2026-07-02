@@ -4,6 +4,7 @@ gunicorn==26.0.0
 packaging==26.2
 pillow==12.2.0
 pyfiglet==1.0.2
+python-dotenv==1.2.2
 sqlparse==0.5.2
 termcolor==2.4.0
 termcolor2==0.0.3
