@@ -2751,3 +2751,13 @@ h2.title {
     -webkit-box-orient: vertical;
 }
 
+.search_box{
+    position: relative;
+    z-index: 9999;
+}
+
+#search-input{
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
