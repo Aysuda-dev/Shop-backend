@@ -1,18 +1,13 @@
-import resend
-import os
+from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 
-
-resend.api_key = os.environ.get("RESEND_API_KEY")
-
-
-def send_email(subject, to, context, template):
-
-    html_message = render_to_string(template, context)
-    params = {
-        "from": "onboarding@resend.dev",  # بعداً دامین خودت را متصل کن
-        "to": [to],
-        "subject": subject,
-        "html": html_message,
-    }
-    resend.Emails.send(params)
+def send_email( subject,to,context ,template):
+    try:
+        html_message = render_to_string( template, context )
+        plain_message = strip_tags(html_message)
+        from_email = settings.EMAIL_HOST_USER
+        send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+    except Exception as e:
+        print(e)
