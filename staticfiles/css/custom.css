@@ -1,0 +1,50 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.errorlist {
+    padding-right: 0 !important;
+}
+
+.errorlist li {
+    color: red;
+}
+
+ul {
+    padding-right: 0;
+}
+
+.search-form {
+    position: relative;
+}
+
+
+#search-results {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background: #d8d5d5;
+    color: #000000;
+    border: 1px solid #000000;
+    display: none;
+    z-index: 9999;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 4px;
+
+}
+
+.search-item {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    border-bottom: 1px solid #000000;
+}
+
+.search-item:hover {
+    background: #d8d5d5;
+}
+
