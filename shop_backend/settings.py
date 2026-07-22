@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
+
 load_dotenv()
 
 from PIL.ImImagePlugin import MODE
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'cloudinary',
+    'cloudinary_storage',
 
     'django_render_partial',
     'sorl.thumbnail',
@@ -49,8 +52,6 @@ INSTALLED_APPS = [
     'nested_admin',
     'sweetify',
     'widget_tweaks',
-
-
 
     'home_module',
     'product_module',
@@ -62,10 +63,6 @@ INSTALLED_APPS = [
     'polls',
     'profile_module',
     'order_module',
-
-
-
-
 
 ]
 
@@ -121,7 +118,6 @@ DATABASES = {
     )
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -164,13 +160,24 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-MEDIA_URL = "/uploads/"
-MEDIA_ROOT = BASE_DIR / "uploads"
+# MEDIA_URL = "/uploads/"
+# MEDIA_ROOT = BASE_DIR / "uploads"
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
@@ -178,8 +185,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'shop.project.demo@gmail.com'
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
-EMAIL_TIMEOUT =10
-
+EMAIL_TIMEOUT = 10
 
 import locale
 import sys
@@ -192,11 +198,10 @@ try:
 except locale.Error:
     pass
 
-
 JALALI_DATE_DEFAULTS = {
-   # if change it to true then all dates of the list_display will convert to the Jalali.
-   'LIST_DISPLAY_AUTO_CONVERT': False,
-   'Strftime': {
+    # if change it to true then all dates of the list_display will convert to the Jalali.
+    'LIST_DISPLAY_AUTO_CONVERT': False,
+    'Strftime': {
         'date': '%y/%m/%d',
         'datetime': '%H:%M:%S _ %y/%m/%d',
     },
@@ -206,7 +211,7 @@ JALALI_DATE_DEFAULTS = {
         ],
         'css': {
             'all': [
-              'admin/css/django_jalali.min.css',
+                'admin/css/django_jalali.min.css',
             ]
         }
     },
