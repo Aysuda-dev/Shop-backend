@@ -1,0 +1,79 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.errorlist {
+    padding-right: 0 !important;
+}
+
+.errorlist li {
+    color: red;
+}
+
+ul {
+    padding-right: 0;
+}
+
+.search-form {
+    position: relative;
+}
+
+
+#search-results {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background: #d8d5d5;
+    color: #000000;
+    border: 1px solid #000000;
+    display: none;
+    z-index: 9999;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 4px;
+
+}
+
+.search-item {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    border-bottom: 1px solid #000000;
+}
+
+.search-item:hover {
+    background: #d8d5d5;
+}
+
+/* Language Switcher */
+.language-switcher form {
+    margin: 0;
+    padding: 0;
+}
+
+.language-switcher button {
+    background: none;
+    border: none;
+    padding: 11px ;
+    color: #696763;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.language-switcher button:hover {
+    color: #FE980F;
+}
+
+/* English page - use English font everywhere */
+html[lang="en"] body * {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Keep Font Awesome icons */
+html[lang="en"] .fa,
+html[lang="en"] .fa::before {
+    font-family: FontAwesome !important;
+}
