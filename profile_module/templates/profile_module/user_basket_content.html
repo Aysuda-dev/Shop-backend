@@ -73,7 +73,7 @@
                         <ul>
                             <li>{% trans 'مجمـوع سبـد خریـد' %} <span>{{ sum | three_digit_currency }}</span></li>
                         </ul>
-                        <a class="btn btn-default check_out" href="{% url 'request_payment' %}">{% trans 'پرداخت' %}</a>
+                        <a class="btn btn-default check_out" onclick="requestPayment(event)">{% trans 'پرداخت' %}</a>
                     </div>
                 </div>
             </div>

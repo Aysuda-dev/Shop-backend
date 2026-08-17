@@ -54,7 +54,7 @@ function showLargeImage(imageSrc) {
 function addProductToOrder(variantid, count) {
     $.get('/order/add-to-order?variant_id=' + variantid + "&count=" + count).done(res => {
         Swal.fire({
-            title: 'اعلان',
+            title: 'Notification',
             text: res.text,
             icon: res.icon,
             confirmButtonColor: '#3085d6',
@@ -113,7 +113,7 @@ function pay() {
     const btn = document.getElementById('pay-success');
 
     btn.disabled = true;
-    btn.innerText = 'در حال پرداخت...';
+    btn.innerText = gettext('در حال پرداخت...');
 
     fetch('/order/verify-payment/?status=success')
         .then(res => res.json())
@@ -125,9 +125,9 @@ function pay() {
                 // نمایش پیام موفقیت با کد رهگیری
                 Swal.fire({
                     icon: 'success',
-                    title: 'پرداخت موفق',
-                    text: 'کد رهگیری: ' + data.ref_id,
-                    confirmButtonText: 'باشه'
+                    title: gettext('پرداخت موفق'),
+                    text: gettext('کد رهگیری: ') + data.ref_id,
+                    confirmButtonText: gettext('باشه')
                 }).then(() => {
                     // بعد از کلیک روی "باشه" → برگشت به صفحه سبد خرید
                     window.location.href = '/user/user-basket';
@@ -135,15 +135,15 @@ function pay() {
             } else {
                 Swal.fire({
                     icon: 'error',
-                    title: 'پرداخت ناموفق',
-                    text: data.message || 'خطا'
+                    title: gettext('پرداخت ناموفق'),
+                    text: data.message || gettext('خطا')
                 });
             }
         })
         .catch(() => {
             btn.disabled = false;
-            btn.innerText = 'پرداخت (دمو)';
-            Swal.fire('خطا', 'مشکل ارتباط با سرور', 'error');
+            btn.innerText = gettext('پرداخت (دمو)');
+            Swal.fire(gettext('خطا'), gettext('مشکل ارتباط با سرور'), 'error');
         });
 }
 
@@ -192,3 +192,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+function requestPayment(event) {
+    event.preventDefault();
+
+    $.get('/order/request-payment/').done(res => {
+
+        if (res.status === 'out_of_stock') {
+            Swal.fire({
+                title: 'Notification',
+                text: res.text,
+                icon: res.icon,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            window.location.href = '/order/payment-page/';
+        }
+
+    });
+}
+

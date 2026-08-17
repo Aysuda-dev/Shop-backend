@@ -2760,3 +2760,23 @@ h2.title {
     z-index: 9999;
     pointer-events: auto;
 }
+
+@media (max-width: 767px) {
+    #cart_items .cart_info .cart_description {
+        width: auto;
+        overflow: hidden;
+    }
+
+    #cart_items .cart_info .cart_description .one-line-text {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #cart_items .cart_info .cart_product {
+        margin: 15px 25px 10px 0;
+    }
+}

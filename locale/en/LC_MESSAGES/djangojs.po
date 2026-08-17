@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-17 09:14-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\static\js\custum.js:57 .\static\js\custum.js:204
+msgid "اعلان"
+msgstr "Notification"
+
+#: .\static\js\custum.js:116
+msgid "در حال پرداخت..."
+msgstr "Procesing payment ..."
+
+#: .\static\js\custum.js:128
+msgid "پرداخت موفق"
+msgstr "Successful payment"
+
+#: .\static\js\custum.js:129
+msgid "کد رهگیری: "
+msgstr "Tracking code"
+
+#: .\static\js\custum.js:130
+msgid "باشه"
+msgstr "OK"
+
+#: .\static\js\custum.js:138
+msgid "پرداخت ناموفق"
+msgstr "Payment fail"
+
+#: .\static\js\custum.js:139 .\static\js\custum.js:146
+#: .\static\js\custum2.js:75
+msgid "خطا"
+msgstr "Error"
+
+#: .\static\js\custum.js:145
+msgid "پرداخت (دمو)"
+msgstr "Payment(Demo)"
+
+#: .\static\js\custum.js:146
+msgid "مشکل ارتباط با سرور"
+msgstr "Server connection error "
+
+#: .\static\js\custum2.js:22
+msgid "اول سایز را انتخاب کنید"
+msgstr "Please select a size first"
+
+#: .\static\js\custum2.js:25
+msgid "سایز انتخاب نشده"
+msgstr "No size selected"
+
+#: .\static\js\custum2.js:34
+msgid "انتخاب رنگ "
+msgstr "Select color"
+
+#: .\static\js\custum2.js:38
+msgid "حالا رنگ را انتخاب کنید "
+msgstr "Now select a color "
+
+#: .\static\js\custum2.js:65
+msgid "قیمت"
+msgstr "Price"
+
+#: .\static\js\custum2.js:76
+msgid "تعداد مورد نظر موجود نیست"
+msgstr "The requested quantity is not available "
+
+#: .\static\js\custum2.js:80
+msgid "باشه ممنون"
+msgstr "okay, Thank you"

@@ -1,8 +1,7 @@
-
 function three_digit_currency(value) {
     if (value === null || value === undefined) return '';
 
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + 'ریال';
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '$';
 }
 
 
@@ -12,28 +11,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const variantInfo = document.getElementById("variantInfo");
     const variantPrice = document.getElementById("price_id");
     const addBtt = document.getElementById("add-btt");
-    const productId= document.getElementById("productId").value;
+    const productId = document.getElementById("productId").value;
 
     sizeSelect.value = '';
-
-
     sizeSelect.addEventListener("change", function () {
         const sizeId = this.value;
 
         if (!sizeId) {
-            colorSelect.innerHTML = "<option value=''>اول سایز را انتخاب کنید</option>";
-            variantInfo.innerHTML = "<p style='color:#666'>سایز انتخاب نشده</p>";
+            colorSelect.innerHTML =
+                "<option value=''>" + gettext("اول سایز را انتخاب کنید") + "</option>";
+
+            variantInfo.innerHTML =
+                "<p style='color:#666'>" + gettext("سایز انتخاب نشده") + "</p>";
+
             return;
         }
 
         fetch(`/product/colors/${productId}/?size_id=${sizeId}`)
             .then(res => res.json())
             .then(data => {
-                colorSelect.innerHTML = "<option value=''>انتخاب رنگ</option>";
+
+                colorSelect.innerHTML = "<option value=''> " + gettext("انتخاب رنگ ") + " </option>";
                 data.colors.forEach(c => {
                     colorSelect.innerHTML += `<option value="${c.color_id}">${c.color__name}</option>`;
                 });
-                variantInfo.innerHTML = "<p style='color:#666'>حالا رنگ را انتخاب کنید</p>";
+                variantInfo.innerHTML = "<p style='color:#666'> " + gettext("حالا رنگ را انتخاب کنید ") + " </p>";
             });
     });
 
@@ -59,7 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 addBtt.disabled = false;
                 addBtt.setAttribute("data-variant-id", data.variant_id);
 
-                variantPrice.innerHTML = `<h3><b>قیمت :</b> ${three_digit_currency(data.price)}</h3>`;
+                variantPrice.innerHTML =
+                    `<h3><b>${gettext("قیمت")} :</b> ${three_digit_currency(data.price)}</h3>`;
                 addBtt.dataset.variantStock = data.stock;
             });
     });
@@ -69,12 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const stock = parseInt(addBtt.dataset.variantStock, 10);
         if (count > stock) {
             Swal.fire({
-                title: 'خطا',
-                text: "تعداد مورد نظر موجود نیست",
+                title: gettext('خطا'),
+                text: gettext("تعداد مورد نظر موجود نیست"),
                 icon: 'warning',
                 showCancelButton: false,
                 confirmButtonColor: '#3085d6',
-                confirmButtonText: 'باشه ممنون'
+                confirmButtonText: gettext('باشه ممنون')
             });
             return;
         }
