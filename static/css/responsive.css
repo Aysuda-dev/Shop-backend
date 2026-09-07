@@ -444,7 +444,14 @@ ul.sub-menu{
 .img-responsive{
 	max-width: 100% !important;
 }
-	
+
+#slider-carousel .img-responsive{
+	width: 100%;
+	max-width: 100% !important;
+	height: auto;
+	display: block;
+}
+
 .item{
 	padding-left: 0;
 }
@@ -500,12 +507,6 @@ ul.sub-menu{
 
 .category-tab .nav-tabs li{
 	float: none;
-}
-
-#slider-carousel .img-responsive{
-	width: 100%;
-	max-width: 100% !important;
-	height: auto;
 }
 
 #similar-product .carousel-inner .item img{
