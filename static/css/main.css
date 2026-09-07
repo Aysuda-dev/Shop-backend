@@ -2780,3 +2780,30 @@ h2.title {
         margin: 15px 25px 10px 0;
     }
 }
+/* ثابت نگه داشتن اندازه کارت محصولات بالای صفحه */
+#recommended-item-carousel .productinfo h2,
+#new-item-carousel .productinfo h2,
+#major-item-carousel .productinfo h2 {
+    height: 58px;
+    min-height: 58px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* ظاهر بخش جزئیات محصولات بالایی مثل محصولات دسته‌بندی */
+#recommended-item-carousel .choose,
+#new-item-carousel .choose,
+#major-item-carousel .choose {
+    background: #fff;
+}
+
+#recommended-item-carousel .choose ul li a,
+#new-item-carousel .choose ul li a,
+#major-item-carousel .choose ul li a {
+    background: #fff;
+    color: #B3AFA8;
+    border-radius: 0;
+}

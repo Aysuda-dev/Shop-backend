@@ -12,6 +12,7 @@ from  utils.convertors import group_list
 from django.http import JsonResponse
 
 
+
 # Create your views here.
 
 def global_search(request):
