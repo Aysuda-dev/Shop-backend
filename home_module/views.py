@@ -17,9 +17,9 @@ class indx_page(TemplateView):
         context = super().get_context_data(**kwargs)
         sliders:Slider = Slider.objects.filter(is_active=True)
         context['sliders'] = sliders
-        latest_products= Products.objects.filter(is_active=True , is_deleted=False).order_by('-id')[:12]
+        latest_products= Products.objects.filter(is_active=True , is_deleted=False).order_by('-id')[:8]
         context['latest_products'] = group_list(latest_products)
-        most_visit_product = Products.objects.filter(is_active=True , is_deleted=False).annotate(visit_count= Count('productvisit'))[:12]
+        most_visit_product = Products.objects.filter(is_active=True , is_deleted=False).annotate(visit_count= Count('productvisit'))[:8]
         context['most_visit_product'] = group_list(most_visit_product)
 
         categories = list(Category.objects.filter(is_active=True ,is_deleted=False)[:6])
@@ -36,7 +36,7 @@ class indx_page(TemplateView):
         from django.db.models import Sum
         most_bought_products = Products.objects.filter(variants__orderdetail__order__is_paid=True).annotate(order_count=Sum(
             'variants__orderdetail__count'
-        )).order_by('-order_count')[:12]
+        )).order_by('-order_count')[:8]
 
         context['most_bought_products'] = group_list(most_bought_products)
         return context

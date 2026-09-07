@@ -442,7 +442,7 @@ ul.sub-menu{
 
 	
 .img-responsive{
-	max-width: 90% !important;
+	max-width: 100% !important;
 }
 	
 .item{
@@ -500,6 +500,12 @@ ul.sub-menu{
 
 .category-tab .nav-tabs li{
 	float: none;
+}
+
+#slider-carousel .img-responsive{
+	width: 100%;
+	max-width: 100% !important;
+	height: auto;
 }
 
 #similar-product .carousel-inner .item img{

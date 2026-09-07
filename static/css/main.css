@@ -2784,13 +2784,14 @@ h2.title {
 #recommended-item-carousel .productinfo h2,
 #new-item-carousel .productinfo h2,
 #major-item-carousel .productinfo h2 {
-    height: 58px;
-    min-height: 58px;
+    height: 100px;
+    min-height: 100px;
     margin: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    line-height: 1.4;
 }
 
 /* ظاهر بخش جزئیات محصولات بالایی مثل محصولات دسته‌بندی */
